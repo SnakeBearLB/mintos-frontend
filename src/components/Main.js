@@ -1,7 +1,51 @@
 
+import { useEffect, useState } from "react"
+import { Route, Switch } from "react-router-dom"
+import Index from "../pages/Index"
+import Show from "../pages/Show"
 
-function Component(props){
-  return <h1>Component Name</h1>;
+function Main(props){
+
+  const [ assets, setAssets ] = useState(null);
+
+  const URL = "https://mintos-lb.herokuapp.com/asset"
+
+  const getAssets = async () => {
+    const response = await fetch(URL)
+    const data = await response.json()
+    setAssets(data);
+  }
+
+  const createAssets = async (asset) => {
+    await fetch(URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "Application/json",
+      },
+      body: JSON.stringify(asset),
+    })
+    getAssets();
+  }
+
+  useEffect(() => getAssets(), [])
+
+  return (
+    <main>
+      <Switch>
+        <Route exact path="/">
+          <Index assets={assets} createAssets={createAssets}/>
+        </Route>
+        <Route
+          path="/asset/:id"
+          render={(rp) => (
+            <Show
+              {...rp}
+            />
+          )}
+        />
+      </Switch>
+    </main>
+  )
 } 
 
-export default Component;
+export default Main;

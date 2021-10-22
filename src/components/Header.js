@@ -1,7 +1,15 @@
 
 
-function Component(props){
-  return <h1>Component Name</h1>;
-} 
+import { Link } from "react-router-dom"
 
-export default Component;
+function Header(props) {
+  return (
+    <nav className="nav">
+      <Link to="/">
+        <div>Assets</div>
+      </Link>
+    </nav>
+  )
+}
+
+export default Header;
