@@ -1,4 +1,4 @@
-
+import React from "react"
 import { useEffect, useState } from "react"
 import { Route, Switch } from "react-router-dom"
 import Index from "../pages/Index"
@@ -8,7 +8,9 @@ function Main(props){
 
   const [ assets, setAssets ] = useState(null);
 
-  const URL = "https://mintos-lb.herokuapp.com/asset"
+  const URL = "http://mintos-lb.herokuapp.com/asset/"
+
+  // const URL = "http://localhost:4000/asset/"
 
   const getAssets = async () => {
     const response = await fetch(URL)
@@ -27,6 +29,25 @@ function Main(props){
     getAssets();
   }
 
+  const updateAsset = async (asset, id) => {
+    console.log(id)
+    await fetch(URL + id, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "Application/json",
+      }, 
+      body: JSON.stringify(asset),
+    });
+    getAssets();
+  }
+
+  const deleteAsset = async id => {
+    await fetch(URL + id, {
+      method: "DELETE",
+    })
+    getAssets();
+  }
+
   useEffect(() => getAssets(), [])
 
   return (
@@ -37,8 +58,11 @@ function Main(props){
         </Route>
         <Route
           path="/asset/:id"
-          render={(rp) => (
+          render={rp => (
             <Show
+              assets={assets}
+              updateAsset={updateAsset}
+              deleteAsset={deleteAsset}
               {...rp}
             />
           )}

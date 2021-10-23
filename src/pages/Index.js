@@ -25,9 +25,9 @@ function Index(props) {
   // loaded function
   const loaded = () => {
   return props.assets.map((asset) => (
-    <div key={asset._id} className="person">
-      <Link to={`/people/${asset._id}`}><h1>{asset.name}</h1></Link>
-      <h3>{asset.title}</h3>
+    <div key={asset._id} className="asset">
+      <h1>{asset.title}</h1>
+      <Link to={`/asset/${asset._id}`}><h3>More Info</h3></Link>
       <img src={asset.image} alt={asset.title} />
     </div>
   ))
