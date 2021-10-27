@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 import { Route, Switch } from "react-router-dom"
 import Index from "../pages/Index"
 import Show from "../pages/Show"
+import Minter from "../Minter"
 
 function Main(props){
 
@@ -52,6 +53,9 @@ function Main(props){
       <Switch>
         <Route exact path="/">
           <Index assets={assets} createAssets={createAssets}/>
+        </Route>
+        <Route>
+          <Minter />
         </Route>
         <Route
           path="/asset/:id"

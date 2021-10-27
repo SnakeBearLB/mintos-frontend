@@ -8,6 +8,9 @@ function Header(props) {
       <Link to="/">
         <div>Assets</div>
       </Link>
+      <Link to="/minter">
+        <div>Minter</div>
+      </Link>
     </nav>
   )
 }
