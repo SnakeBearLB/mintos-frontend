@@ -12,7 +12,7 @@ const Assets = styled.div`
   flex-wrap: wrap;
   justify-content: center;
 `
-const assetContainer = styled.div`
+const AssetContainer = styled.div`
   
 `
 
