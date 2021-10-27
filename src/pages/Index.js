@@ -15,8 +15,8 @@ const Assets = styled.div`
 `
 const AssetContainer = styled.div`
   width: 180px;
-  Height: 350px;
-  background-color: gray;
+  Height: 280px;
+  margin: 10px;
 `
 
 const Submit = styled.input`
@@ -25,6 +25,9 @@ const Submit = styled.input`
 const Image = styled.img`
   width: 180px;
   border-radius: 5px;
+`
+const assetForm = styled.form`
+  margin-bottom: 60px;
 `
 
 function Index(props) {
@@ -72,7 +75,7 @@ function Index(props) {
 
   return (
     <section>
-      <form onSubmit={handleSubmit}>
+      <assetForm onSubmit={handleSubmit}>
         <input
           type="text"
           value={newForm.title}
@@ -90,7 +93,7 @@ function Index(props) {
         <Submit type="submit" value="Upload Asset" />
         {props.assets ? loaded() : loading()}
         
-      </form>
+      </assetForm>
     </section>
   )
 } 
