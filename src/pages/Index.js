@@ -75,7 +75,7 @@ function Index(props) {
 
   return (
     <section>
-      <assetForm onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <input
           type="text"
           value={newForm.title}
@@ -93,7 +93,7 @@ function Index(props) {
         <Submit type="submit" value="Upload Asset" />
         {props.assets ? loaded() : loading()}
         
-      </assetForm>
+      </form>
     </section>
   )
 } 

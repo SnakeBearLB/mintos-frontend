@@ -54,9 +54,7 @@ function Main(props){
         <Route exact path="/">
           <Index assets={assets} createAssets={createAssets}/>
         </Route>
-        <Route>
-          <Minter />
-        </Route>
+
         <Route
           path="/asset/:id"
           render={rp => (
@@ -68,6 +66,9 @@ function Main(props){
             />
           )}
         />
+        <Route>
+          <Minter />
+        </Route>
       </Switch>
     </main>
   )
