@@ -1,5 +1,7 @@
 import React from "react"
 import { useState } from "react"
+import styled from 'styled-components'
+
 
 function Show(props) {
   const id = props.match.params.id

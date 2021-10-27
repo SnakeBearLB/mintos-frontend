@@ -10,8 +10,6 @@ function Main(props){
 
   const URL = "http://mintos-lb.herokuapp.com/asset/"
 
-  // const URL = "http://localhost:4000/asset/"
-
   const getAssets = async () => {
     const response = await fetch(URL)
     const data = await response.json()
@@ -30,7 +28,6 @@ function Main(props){
   }
 
   const updateAsset = async (asset, id) => {
-    console.log(id)
     await fetch(URL + id, {
       method: "PUT",
       headers: {

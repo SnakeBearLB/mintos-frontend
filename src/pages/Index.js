@@ -1,6 +1,28 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
+import styled from "styled-components"
 
+// styled components
+// import {Submit} from "../styles/submit-button.styled"
+
+const Assets = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+`
+const assetContainer = styled.div`
+  
+`
+
+const Submit = styled.input`
+  background-color: #03fcec;
+`
+const Image = styled.img`
+  width: 10em;
+  border-radius: 5px;
+`
 
 function Index(props) {
 
@@ -22,15 +44,23 @@ function Index(props) {
     })
   }
 
+  const allAssets = () => {
+    return props.assets.map((asset) => (
+      <div key={asset._id} className="asset">
+        <h1>{asset.title}</h1>
+        <Link to={`/asset/${asset._id}`}><h3>More Info</h3></Link>
+        <Image src={asset.image} alt={asset.title} />
+      </div>
+    ))
+  }
+
   // loaded function
   const loaded = () => {
-  return props.assets.map((asset) => (
-    <div key={asset._id} className="asset">
-      <h1>{asset.title}</h1>
-      <Link to={`/asset/${asset._id}`}><h3>More Info</h3></Link>
-      <img src={asset.image} alt={asset.title} />
-    </div>
-  ))
+    return (
+      <Assets>
+        {allAssets()}
+      </Assets>
+    )
   }
 
   const loading = () => {
@@ -54,7 +84,7 @@ function Index(props) {
           placeholder="asset URL"
           onChange={handleChange}
         />
-        <input type="submit" value="Upload Asset" />
+        <Submit type="submit" value="Upload Asset" />
         {props.assets ? loaded() : loading()}
         
       </form>
