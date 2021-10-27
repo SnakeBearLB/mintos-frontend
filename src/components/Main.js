@@ -9,7 +9,7 @@ function Main(props){
 
   const [ assets, setAssets ] = useState(null);
 
-  const URL = "http://mintos-lb.herokuapp.com/asset/"
+  const URL = "https://mintos-lb.herokuapp.com/asset/"
 
   const getAssets = async () => {
     const response = await fetch(URL)

@@ -2,9 +2,10 @@ import { useState } from "react"
 import { Link } from "react-router-dom"
 import styled from "styled-components"
 
-// styled components
+
 // import {Submit} from "../styles/submit-button.styled"
 
+// STYLING
 const Assets = styled.div`
   display: flex;
   flex-direction: row;
@@ -13,14 +14,16 @@ const Assets = styled.div`
   justify-content: center;
 `
 const AssetContainer = styled.div`
-  
+  width: 180px;
+  Height: 350px;
+  background-color: gray;
 `
 
 const Submit = styled.input`
   background-color: #03fcec;
 `
 const Image = styled.img`
-  width: 10em;
+  width: 180px;
   border-radius: 5px;
 `
 
@@ -46,11 +49,11 @@ function Index(props) {
 
   const allAssets = () => {
     return props.assets.map((asset) => (
-      <div key={asset._id} className="asset">
+      <AssetContainer key={asset._id} className="asset">
         <h1>{asset.title}</h1>
         <Link to={`/asset/${asset._id}`}><h3>More Info</h3></Link>
         <Image src={asset.image} alt={asset.title} />
-      </div>
+      </AssetContainer>
     ))
   }
 
