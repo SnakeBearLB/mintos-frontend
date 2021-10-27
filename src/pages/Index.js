@@ -20,7 +20,7 @@ const AssetContainer = styled.div`
 `
 
 const Submit = styled.input`
-  background-color: #03fcec;
+  background-color: #55DBC9;
 `
 const Image = styled.img`
   width: 180px;
