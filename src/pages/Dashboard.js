@@ -1,9 +1,9 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
-import {Assets, AssetContainer, Submit, Image, Section, AssetTitle} from "../styles/Index.styled"
+import {Assets, AssetContainer, Submit, Image, assetForm} from "../styles/Index.styled"
 
 
-function Index(props) {
+function Dashboard(props) {
 
   const [ newForm, setNewForm ] = useState({
     title: "",
@@ -26,7 +26,7 @@ function Index(props) {
   const allAssets = () => {
     return props.assets.map((asset) => (
       <AssetContainer key={asset._id} className="asset">
-        <AssetTitle>{asset.title}</AssetTitle>
+        <h1>{asset.title}</h1>
         <Link to={`/asset/${asset._id}`}><h3>More Info</h3></Link>
         <Image src={asset.image} alt={asset.title} />
       </AssetContainer>
@@ -47,7 +47,7 @@ function Index(props) {
   };
 
   return (
-    <Section>
+    <section>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -67,8 +67,8 @@ function Index(props) {
         {props.assets ? loaded() : loading()}
         
       </form>
-    </Section>
+    </section>
   )
 } 
 
-export default Index;
+export default Dashboard;
